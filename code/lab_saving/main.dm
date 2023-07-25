@@ -30,9 +30,8 @@ obj
 				return
 		wire
 			Write(savefile/F)
-				var/tmp/obj/signal/wire
-					old_line1
-					old_line2
+				var/tmp/obj/signal/wire/old_line1
+				var/tmp/obj/signal/wire/old_line2
 				if(line1)
 					old_line1 = line1
 					if(line1.loc.loc != src.loc.loc)

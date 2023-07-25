@@ -55,9 +55,9 @@ obj
 						spawn(10)
 							winset(usr,"disk_producer.warning_label","text=\"\"")
 						return
-					var
-						d_label = winget(usr,"disk_producer.dlabel","text")
-						d_amount = text2num(winget(usr,"disk_producer.amount","text"))
+					var/d_label = winget(usr,"disk_producer.dlabel","text")
+					var/d_amount = text2num(winget(usr,"disk_producer.amount","text"))
+
 					if(!d_amount)
 						winset(usr,"disk_producer.warning_label","text=\"Invalid amount\"")
 						spawn(10)
@@ -92,7 +92,3 @@ obj
 					icon_state = "massdisk"
 					usr << "Disk production done."
 					busy = 0
-
-
-
-

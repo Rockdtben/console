@@ -39,9 +39,8 @@ obj
 			process_signal(obj/signal/structure/S)
 				..()
 				if(isnull(S))return
-				var
-					id = S.id
-					list/params = splittext(S.params,ascii2text(2))
+				var/id = S.id
+				var/list/params = splittext(S.params,ascii2text(2))
 				if(id == "power")
 					if(params.len >= 1)
 						if(params[1] == "0")
@@ -144,10 +143,9 @@ obj
 					else
 						icon_state = "on"
 						active = 1
-						var
-							r = 1
-							xx = src.x
-							yy = src.y
+						var/r = 1
+						var/xx = src.x
+						var/yy = src.y
 						switch(src.dir)
 							if(NORTH) yy++
 							if(SOUTH) yy--

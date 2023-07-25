@@ -47,9 +47,8 @@ obj/signal
 			src.line1 = null
 			src.line2 = null
 			var/obj/items/wire/W = new /obj/items/wire( src.loc )
-			var
-				n_state = "item_wire"
-				acolor = "black"
+			var/n_state = "item_wire"
+			var/acolor = "black"
 			switch(src.icon)
 				if('icons/b_wire.dmi')
 					n_state = "item_bluewire"
@@ -82,15 +81,13 @@ obj/signal
 				del(src)
 		proc
 			update()
-				var
-					t1
-					t2
+				var/t1
+				var/t2
 				if ((!( src.line1 ) && !( src.line2 )))
 					src.icon_state = "512"
 					src.direction = null
-					var
-						n_state = "item_wire"
-						acolor = "black"
+					var/n_state = "item_wire"
+					var/acolor = "black"
 					switch(src.icon)
 						if('icons/b_wire.dmi')
 							n_state = "item_bluewire"
@@ -233,7 +230,7 @@ obj/signal
 		process_signal(obj/signal/S as obj in view(usr.client), obj/source as obj in view(usr.client))
 			..()
 			if(!S) return
-			
+
 			if(S.master)
 				S.icon_state = S.master.icon_state
 			S.loc = src.loc
@@ -259,4 +256,3 @@ obj/signal
 
 	items
 		wire
-
