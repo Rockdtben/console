@@ -153,17 +153,17 @@ mob
 				new no(usr.loc)
 			Reboot()
 				set category = "Admin"
-				world << "<b><font color=red>Rebooting Initiated</font></b>"				
+				world << "<b><font color=red>Rebooting Initiated</font></b>"
 				SaveLabs()
-				world << "<b><font color=red>Labs Saved</font></b>"				
+				world << "<b><font color=red>Labs Saved</font></b>"
 				// Save PLayers
 				for(var/mob/M in world)
 					if (M.saving == "yes")
 						if(M.ckey != null)
 							var/savefile/F = new /savefile( "saves/players/[M.ckey].sav" )
 							F << M
-				world << "<b><font color=red>Players Saved</font></b>"				
-				world << "<b><font color=red>Rebooting in 5 seconds</font></b>"				
+				world << "<b><font color=red>Players Saved</font></b>"
+				world << "<b><font color=red>Rebooting in 5 seconds</font></b>"
 				sleep(50)
 				world.Reboot()
 			Summon(mob/M as mob in world)
@@ -200,11 +200,6 @@ mob
 				set category = "Admin"
 				if(ismob(A)) return
 				del(A)
-			Spawn()
-				set category = "Admin"
-				var/ni = input("What do you want to spawn?")as null|anything in typesof(/obj)
-				if(!ni) return
-				new ni(usr.loc)
 			DumpVars(atom/A in world)
 				set category = "Admin"
 				var/html = "<b><u>Variable dump for [A.name] (<a href=byond://?src=\ref[src]&edit=\ref[A]>Edit</a>)</b></u><br>"
@@ -256,5 +251,3 @@ mob
 			Load_All_Labs()
 				set category = "Host"
 				LoadLabs()
-
-

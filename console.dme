@@ -8,10 +8,14 @@
 // END_PREFERENCES
 // BEGIN_INCLUDE
 #include "LICENSE.dm"
+#include "__DEFINES\_globals.dm"
+#include "__HELPERS\cmp.dm"
+#include "__HELPERS\helpmisc.dm"
 #include "code\_functions.dm"
 #include "code\defaults.dm"
 #include "code\globals.dm"
 #include "code\admin\admin.dm"
+#include "code\admin\spawn_obj.dm"
 #include "code\atom\defaults.dm"
 #include "code\changelog\changes.dm"
 #include "code\client\client.dm"
