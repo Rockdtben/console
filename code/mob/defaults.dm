@@ -70,7 +70,8 @@ mob
 	var/icon/body = new ('icons/mob/species/human/bodyparts_greyscale.dmi', "human_chest_m")
 	var/icon/lleg = new ('icons/mob/species/human/bodyparts_greyscale.dmi', "human_l_leg")
 	var/icon/rleg = new ('icons/mob/species/human/bodyparts_greyscale.dmi', "human_r_leg")
-	var/icon/suit = new ('icons/mob/clothing/under/suits.dmi', "black_suit")
+	var/icon/suit = new ('icons/mob/clothing/under/suits.dmi', randomSuit())
+	var/icon/feet = new ('icons/mob/clothing/feet.dmi', "laceups")
 	overlays += head
 	overlays += body
 	overlays += larm
@@ -80,4 +81,16 @@ mob
 	overlays += suit
 	overlays += lhand
 	overlays += rhand
+	overlays += feet
 	return ..()
+
+/mob/proc/randomSuit()
+	var/list/suits = list("sl_suit",
+	"good_suit",
+	"really_black_suit",
+	"blacksuit",
+	"charcoal_suit",
+	"navy_suit",
+	"burgundy_suit",
+	"waiter")
+	return suits[rand(1, suits.len)]
