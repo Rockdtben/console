@@ -1,4 +1,10 @@
+#define MOUSE_LEFT  1	// left click
+#define MOUSE_RIGHT 2	// right click
+#define MOUSE_MIDDLE	4	// middle click
+
+
 client
+	var/mouses_down = 0	  //variable for what keys are being held down
 	command_text = "say "
 	New()
 		winset(src,null,"reset=true")
@@ -49,3 +55,45 @@ client
 		del(src.mob)
 		..()
 
+	MouseDown(atom/object,location,control,params)
+		var/list/pref = params2list(params)
+		if("left" in pref)
+			mouses_down |= MOUSE_LEFT
+		if("right" in pref)
+			mouses_down |= MOUSE_RIGHT
+		if("middle" in pref)
+			mouses_down |= MOUSE_MIDDLE
+
+		var/thisX = object.x
+		var/thisY = object.y
+		var/diffX = thisX - src.mob.x
+		var/diffY = thisY - src.mob.y
+
+		var absX = abs(diffX)
+		var absY = abs(diffY)
+
+		if (absX == 0 && absY == 0)
+			src.mob.dir = SOUTH
+		else if (absX > absY)
+			// X
+			if (diffX > 0)
+				src.mob.dir = EAST
+			else
+				src.mob.dir = WEST
+		else
+			//Y
+			if (diffY > 0)
+				src.mob.dir = NORTH
+			else
+				src.mob.dir = SOUTH
+		..()
+
+	MouseUp(object,location,control,params)
+		var/list/pref = params2list(params)
+		if("left" in pref)
+			mouses_down &= ~MOUSE_LEFT
+		if("right" in pref)
+			mouses_down &= ~MOUSE_RIGHT
+		if("middle" in pref)
+			mouses_down &= ~MOUSE_MIDDLE
+		..()
