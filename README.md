@@ -1,3 +1,6 @@
+# community
+Chat, play, develop, and make art.
+Discord: https://discord.gg/ns2Aeu4
 # console
 console is an open-source network and programming simulation "game"
 It was created in 2001 by Exadv1 as a sandbox to experiment with features he planned to implement into Space Station 13.
