@@ -68,6 +68,7 @@
 #include "code\misc\rname.dm"
 #include "code\mob\defaults.dm"
 #include "code\mob\interface.dm"
+#include "code\mob\mobs.dm"
 #include "code\mob\movement.dm"
 #include "code\mob\verbs.dm"
 #include "code\objects\books.dm"
