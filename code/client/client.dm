@@ -9,7 +9,7 @@ client
 	New()
 		winset(src,null,"reset=true")
 		winset(src,"default","is-maximized=true")
-		world << "<B>[src] has logged in!</B>"
+		world << "<B>[src] has logged in! [world.realtime]</B>"
 		src << "<font color=blue>Version: [n_version][n_sub]</font>"
 		src << "<font color=red>Welcome to console [n_version][n_sub] -- Click <a href=?changes>here</a> for a list of changes."
 		var/old_mob = src.mob
@@ -51,7 +51,7 @@ client
 		if ((src.mob && src.mob.saving == "yes"))
 			var/savefile/F = new /savefile( "saves/players/[src.ckey].sav" )
 			F << src.mob
-		world << "<B>[src] has logged out!</B>"
+		world << "<B>[src] has logged out! [world.realtime]</B>"
 		del(src.mob)
 		..()
 
