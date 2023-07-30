@@ -6,7 +6,7 @@ world/proc/LoadAdmins()
 	if(!json)
 		var/json_file = file("config/admins.json")
 		if(!fexists(json_file))
-			world.log << "Failed to admins.json. File likely corrupt."
+			world.log << "Failed to load admins.json. File likely corrupt."
 			return
 		return
 	admins = json_decode(json)
@@ -88,6 +88,9 @@ mob
 				var/save_contents = F.ExportText("/")
 				usr << browse("<pre>[save_contents]</pre>","debug_browser.browser")
 				winshow(usr,"debug_browser",1)
+			ReloadConfig()
+				set category = "Admin"
+				world.LoadConfig()
 			ReloadAdmins()
 				set category = "Admin"
 				world.LoadAdmins()

@@ -124,14 +124,18 @@ atom
 // For saving all of the labs in a loop.
 proc
 	SaveLabs()
-		world.log << "<b>Beginning lab saving process!</b>"
+		if (config["loglabsaving"])
+			world.log << "<b>Beginning lab saving process!</b>"
 		for(var/area/save_location/S in world)
 			if(S.auto_save)
-				world.log << "Saving lab: [S.name] ([S.contents.len])...\..."
+				if (config["loglabsaving"])
+					world.log << "Saving lab: [S.name] ([S.contents.len])...\..."
 				S.Save()
 				sleep(1)
-				world.log << "saved."
-		world.log << "All labs saved successfully."
+				if (config["loglabsaving"])
+					world.log << "saved."
+		if (config["loglabsaving"])
+			world.log << "All labs saved successfully."
 
 	LoadLabs()
 		world.log << "<b>Beginning lab loading process!</b>"
@@ -225,7 +229,7 @@ mob
 			winset(src,"menu.lab_control","is-disabled=false")
 
 // Happens on world creation. Loads Lab door_codes from a json.
-world/proc/LoadConfig()
+world/proc/LoadDoorConfig()
 	world.log << "Door Code Config Loading"
 	var/json = file2text("config/door_codes.json")
 	if(!json)

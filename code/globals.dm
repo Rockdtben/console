@@ -16,9 +16,10 @@ world
 	New()
 		..()
 		status = "Version [n_version][n_sub]"
-		
+
 		LoadAdmins()
-		LoadConfig()	
+		LoadConfig()
+		LoadDoorConfig() // Possibly merge into LoadConfig
 		LoadMOTD()
 
 		// Initialize with loaded config.
@@ -45,5 +46,3 @@ obj
 obj
 	var
 	obj/items/lock/lock
-
-

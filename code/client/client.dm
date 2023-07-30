@@ -10,6 +10,7 @@ client
 		winset(src,null,"reset=true")
 		winset(src,"default","is-maximized=true")
 		world << "<B>[src] has logged in! [time2text(world.time, "DDD DD MMM (MM), YYYY - hh:mm:ss")]</B>"
+		world.log << "<B>[src] has logged in! [time2text(world.time, "DDD DD MMM (MM), YYYY - hh:mm:ss")]</B>"
 		src << "<font color=blue>Version: [n_version][n_sub]</font>"
 		src << "<font color=red>Welcome to console [n_version][n_sub] -- Click <a href=?changes>here</a> for a list of changes."
 		var/old_mob = src.mob
@@ -52,6 +53,7 @@ client
 			var/savefile/F = new /savefile( "saves/players/[src.ckey].sav" )
 			F << src.mob
 		world << "<B>[src] has logged out! [time2text(world.time, "DDD DD MMM (MM), YYYY - hh:mm:ss")]</B>"
+		world.log << "<B>[src] has logged out! [time2text(world.time, "DDD DD MMM (MM), YYYY - hh:mm:ss")]</B>"
 		del(src.mob)
 		..()
 
