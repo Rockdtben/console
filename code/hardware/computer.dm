@@ -107,6 +107,7 @@ obj/signal
 				if(usr.using_laptop) wtabs += "[wtabs?",":""]laptop_window"
 				winset(usr,"computer_window.operating_tab","tabs=\"[wtabs]\"")
 				winset(usr,"computer_window.computer_input","focus=true")
+				winset(usr,"computer_window.computer_input","text=\"> \"")
 				winset(usr,"computer_window.operating_tab","current-tab=\"[ty]_window\"")
 				for(var/obj/items/scan_chip/S in usr.bugs)
 					usr.bugs -= S
@@ -115,6 +116,8 @@ obj/signal
 
 				if (src.status != "on")
 					src.start()
+				else
+					src.showScreen()
 				return
 
 			stop_operate()
@@ -190,6 +193,16 @@ obj/signal
 						src.cur_log.text += "Shutdown [time2text(world.realtime, "MM/DD/YYYY hh:mm:ss")]; \[terminate\]"
 					src.cur_log = null
 				return
+
+			showScreen(console=1)
+				if ((src.status == "destroyed" || src.status == "no_m"))
+					return
+				if(console)
+					for(var/mob/M in oview(src,1))
+						if(M.using_computer == src||M.using_laptop == src)
+							var/ty = "desktop"
+							if(istype(src,/obj/signal/computer/laptop)) ty = "laptop"
+							M << output(null,"[ty]_window.computer_output")
 
 			start(console=1)
 				if ((src.status == "destroyed" || src.status == "no_m"))
